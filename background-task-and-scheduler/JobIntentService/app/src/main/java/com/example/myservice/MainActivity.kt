@@ -26,6 +26,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             //kode untuk menjalankan service
             val mStartServiceIntent = Intent(this, MyService::class.java)
             startService(mStartServiceIntent)
+        }else if(view.id == R.id.btn_start_job_intent_service){
+            val mStartIntentService = Intent(this, MyJobIntentService::class.java)
+            mStartIntentService.putExtra(MyJobIntentService.EXTRA_DURATION, 5000L)
+            MyJobIntentService.enqueueWork(this, mStartIntentService)
         }
     }
 }
